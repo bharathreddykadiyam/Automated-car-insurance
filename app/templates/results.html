@@ -11,6 +11,9 @@
     <br>
     <p><img src="{{ url_for('send_file', filename=filename) }}" class="img-thumbnail" id="picture"></p>
       <h4>Results:</h4>
+      {% if result and 'models_loaded' in result and not result['models_loaded'] %}
+        <p><em>Note: some ML model files were unavailable; using heuristic fallbacks. Results may be approximate.</em></p>
+      {% endif %}
     <table>
     <tr><td>Car validation check</td>
       {% if result['gate1_result'] %}

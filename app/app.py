@@ -51,6 +51,8 @@ def upload_and_classify():
 			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 			filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
 			model_results = engine.engine(filepath)
+			# debug: log model results server-side
+			print('MODEL_RESULTS:', model_results)
 
 			return render_template('results.html', result=model_results, scroll='third', filename=filename)
 	
